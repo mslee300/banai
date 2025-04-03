@@ -1,14 +1,8 @@
 // app/[character]/page.tsx
 import ChatClient from "./ChatClient";
 
-interface PageProps {
-  params: {
-    character: string;
-  };
-}
-
-export default async function ChatPage({ params }: PageProps) {
-  // Await params to satisfy Next.js' dynamic route requirement.
+export default async function ChatPage(props: any) {
+  const { params } = props;
   const resolvedParams = await Promise.resolve(params);
   return <ChatClient characterId={resolvedParams.character} />;
 }

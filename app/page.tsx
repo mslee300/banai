@@ -1,103 +1,217 @@
-import Image from "next/image";
+import Header from './components/Header';
+import BottomNav from './components/BottomNav';
+import CarouselSection from './components/CarouselSection';
+import Banner from './components/Banner';
 
 export default function Home() {
-  return (
-    <div className="grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]">
-      <main className="flex flex-col gap-[32px] row-start-2 items-center sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={180}
-          height={38}
-          priority
-        />
-        <ol className="list-inside list-decimal text-sm/6 text-center sm:text-left font-[family-name:var(--font-geist-mono)]">
-          <li className="mb-2 tracking-[-.01em]">
-            Get started by editing{" "}
-            <code className="bg-black/[.05] dark:bg-white/[.06] px-1 py-0.5 rounded font-[family-name:var(--font-geist-mono)] font-semibold">
-              app/page.tsx
-            </code>
-            .
-          </li>
-          <li className="tracking-[-.01em]">
-            Save and see your changes instantly.
-          </li>
-        </ol>
+  const recommendedProfiles = [
+    {
+      imageSrc: '/profiles/lana-condor.png',
+      name: 'Lana Condor',
+      description: "Nữ diễn viên gốc Việt tỏa sáng tại Hollywood với vai diễn trong 'To All the Boys I've Loved Before'.",
+      nickname: '@MeoMupMiem'
+    },
+    {
+      imageSrc: '/profiles/ty-quay.png',
+      name: 'Tý Quậy',
+      description: "Cậu học trò nghịch ngợm nhưng thông minh, luôn mang đến những câu chuyện hài hước và ý nghĩa.",
+      nickname: '@NguyenCode'
+    },
+    {
+      imageSrc: '/profiles/den-vau.png',
+      name: 'Đen Vâu',
+      description: "Rapper với phong cách mộc mạc, lời rap chân thật chạm đến trái tim người nghe.",
+      nickname: '@BanTraDa'
+    },
+    {
+      imageSrc: '/profiles/xa-xe.png',
+      name: 'Xã Xệ and Lý Toét',
+      description: "Cặp đôi biếm họa kinh điển, phản ánh xã hội xưa một cách hài hước.",
+      nickname: '@CayBuoiNhaTo'
+    },
+    {
+      imageSrc: '/profiles/ba-giai.png',
+      name: 'Ba Giai and Tú Xuất',
+      description: "Bộ đôi lém lỉnh, nổi tiếng với những trò đùa dân gian thú vị.",
+      nickname: '@LapTrinhLaChanh'
+    },
+    {
+      imageSrc: '/profiles/bich.png',
+      name: 'Bích Phương',
+      description: "Nữ ca sĩ ballad với loạt hit tình cảm chạm đến trái tim.",
+      nickname: '@BaDaoChuaBaoGio'
+    }
+  ];
 
-        <div className="flex gap-4 items-center flex-col sm:flex-row">
-          <a
-            className="rounded-full border border-solid border-transparent transition-colors flex items-center justify-center bg-foreground text-background gap-2 hover:bg-[#383838] dark:hover:bg-[#ccc] font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 sm:w-auto"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={20}
-              height={20}
-            />
-            Deploy now
-          </a>
-          <a
-            className="rounded-full border border-solid border-black/[.08] dark:border-white/[.145] transition-colors flex items-center justify-center hover:bg-[#f2f2f2] dark:hover:bg-[#1a1a1a] hover:border-transparent font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 w-full sm:w-auto md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Read our docs
-          </a>
-        </div>
-      </main>
-      <footer className="row-start-3 flex gap-[24px] flex-wrap items-center justify-center">
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/file.svg"
-            alt="File icon"
-            width={16}
-            height={16}
-          />
-          Learn
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/window.svg"
-            alt="Window icon"
-            width={16}
-            height={16}
-          />
-          Examples
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/globe.svg"
-            alt="Globe icon"
-            width={16}
-            height={16}
-          />
-          Go to nextjs.org →
-        </a>
-      </footer>
+  const featuredProfiles = [
+    {
+      imageSrc: '/profiles/hesman.png',
+      name: 'Dũng sĩ Hesman',
+      description: "Siêu robot không lồ, biểu tượng của lòng dũng cảm và chính nghĩa trong truyện tranh Việt.",
+      nickname: '@HesmanOfficial'
+    },
+    {
+      imageSrc: '/profiles/son-tung.png',
+      name: 'Sơn Tùng M-TP',
+      description: "Ca sĩ hàng đầu V-pop, nổi bật với phong cách âm nhạc độc đáo và loạt hit đình đám.",
+      nickname: '@MTP'
+    },
+    {
+      imageSrc: '/profiles/maggie.png',
+      name: 'Maggie Q',
+      description: "Nữ diễn viên hành động gốc Việt, nổi tiếng với vai chính trong series 'Nikita' và các phim Hollywood.",
+      nickname: '@MaggieQ'
+    },
+    {
+      imageSrc: '/profiles/trang.png',
+      name: 'Trạng Quỳnh',
+      description: "Nhân vật dân gian, nổi tiếng với trí thông minh và những câu chuyện hài hước.",
+      nickname: '@OtHiemLevel99'
+    },
+    {
+      imageSrc: '/profiles/noo.png',
+      name: 'Noo Phước Thịnh',
+      description: "Hoàng tử V-pop, chinh phục khán giả bằng giọng hát ngọt ngào.",
+      nickname: '@LanhLungMaDeThuong'
+    },
+    {
+      imageSrc: '/profiles/toc.png',
+      name: 'Tóc Tiên',
+      description: "Ca sĩ cá tính, phong cách hiện đại và âm nhạc sôi động.",
+      nickname: '@TuoiThoLaDay'
+    }
+    
+  ];
+
+  const popularProfiles = [
+    {
+      imageSrc: '/profiles/hochiminh.png',
+      name: 'Hồ Chí Minh',
+      description: "Lãnh tụ vĩ đại, người cha già kính yêu của dân tộc Việt Nam.",
+      nickname: '@NghiNgoToanTap'
+    },
+    {
+      imageSrc: '/profiles/suboi.png',
+      name: 'Suboi',
+      description: "Nữ hoàng rap Việt, chất riêng không lẫn vào đâu.",
+      nickname: '@BoSuuTapTinhTe'
+    },
+    {
+      imageSrc: '/profiles/tran.png',
+      name: 'Trấn Thành',
+      description: "MC đa tài, diễn viên hài hước, chinh phục mọi khán giả.",
+      nickname: '@TraSuaLaChanLy'
+    },
+    {
+      imageSrc: '/profiles/min.png',
+      name: 'Min',
+      description: "Nữ ca sĩ đa tài, từ vũ đạo đến giọng hát đều cuốn hút.",
+      nickname: '@ThangBeCung'
+    },
+    {
+      imageSrc: '/profiles/erik.png',
+      name: 'Erik',
+      description: "Giọng ca trẻ triển vọng, ghi dấu với nhiều bản hit ballad.",
+      nickname: '@BacSiTamLy'
+    },
+    {
+      imageSrc: '/profiles/sailor-moon.png',
+      name: 'Sailor Moon',
+      description: "Chiến binh xinh đẹp trong bộ đồng phục thủy thủ, bảo vệ tình yêu và công lý.",
+      nickname: '@DoiKhongNhuLaMo'
+    }
+  ];
+
+  const trendingProfiles = [
+    {
+      imageSrc: '/profiles/ho.png',
+      name: 'Hồ Ngọc Hà',
+      description: "Nữ hoàng giải trí, giọng ca đầy cảm xúc và phong cách.",
+      nickname: '@AnhCoder'
+    },
+    {
+      imageSrc: '/profiles/chi-pu.png',
+      name: 'Chi Pu',
+      description: "Từ hot girl đến ca sĩ, diễn viên đa năng, luôn đổi mới.",
+      nickname: '@ConCaHe'
+    },
+    {
+      imageSrc: '/profiles/hoa-minzy.png',
+      name: 'Hòa Minzy',
+      description: "Giọng ca nội lực, quán quân 'Học viện ngôi sao' đầy triển vọng.",
+      nickname: '@NguoiHayCuoi'
+    },
+    {
+      imageSrc: '/profiles/phurong.png',
+      name: 'Phương Ly',
+      description: "Ca sĩ trẻ với phong cách dễ thương và âm nhạc bắt tai.",
+      nickname: '@VoCucVaHonThe'
+    },
+    {
+      imageSrc: '/profiles/doraemon.png',
+      name: 'Doraemon',
+      description: "Chú mèo máy đến từ tương lai, bạn thân của Nobita, luôn giúp đỡ bằng bảo bối thần kỳ.",
+      nickname: '@ChuTichHoiFan'
+    },
+    {
+      imageSrc: '/profiles/tom-and-jerry.png',
+      name: 'Tom and Jerry',
+      description: "Cặp đôi mèo và chuột huyền thoại, mang đến những màn rượt đuổi hài hước.",
+      nickname: '@ChoiGameChua'
+    }
+  ];
+
+  const newProfiles = [
+    {
+      imageSrc: '/profiles/issac.png',
+      name: 'Isaac',
+      description: "Cựu trưởng nhóm 365, ca sĩ điển trai với giọng hát cuốn hút.",
+      nickname: '@CauBeUBu'
+    },
+    {
+      imageSrc: '/profiles/khoi.png',
+      name: 'Khởi My',
+      description: "Ca sĩ trẻ trung, năng động, ghi dấu với nhiều bản hit tuổi teen.",
+      nickname: '@BanhMiNong'
+    },
+    {
+      imageSrc: '/profiles/le-ti.png',
+      name: 'Lê Tí',
+      description: "Thần đồng đất Việt, cậu bé thông minh giải quyết mọi thử thách.",
+      nickname: '@BanMaiXanh'
+    },
+    {
+      imageSrc: '/profiles/karik.png',
+      name: 'Karik',
+      description: "Rapper cá tính, giám khảo 'Rap Việt', ghi dấu với nhiều bản rap chất lượng.",
+      nickname: '@CauBeUBu'
+    },
+    {
+      imageSrc: '/profiles/nu.png',
+      name: 'Nu, pogodi!',
+      description: "Sói và Thỏ, cặp đôi hoạt hình Nga với những màn rượt đuổi kinh điển.",
+      nickname: '@BanhMiNong'
+    },
+    {
+      imageSrc: '/profiles/hurong-tram.png',
+      name: 'Hương Tràm',
+      description: "Quán quân 'The Voice', giọng ca đầy cảm xúc và nội lực.",
+      nickname: '@BanMaiXanh'
+    }
+  ];
+
+  return (
+    <div style={{ minHeight: "100vh" }}>
+      <Header />
+      <Banner />
+      <div style={{ paddingTop: "10px", paddingBottom: "80px" }}>
+        <CarouselSection title="Đề xuất" profiles={recommendedProfiles} />
+        <CarouselSection title="Nổi bật" profiles={featuredProfiles} />
+        <CarouselSection title="Phổ biến" profiles={popularProfiles} />
+        <CarouselSection title="Thịnh hành" profiles={trendingProfiles} />
+        <CarouselSection title="Mới nhất" profiles={newProfiles} />
+      </div>
+      {/* <BottomNav /> */}
     </div>
   );
 }

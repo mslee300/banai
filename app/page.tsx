@@ -1,5 +1,4 @@
 import Header from './components/Header';
-import BottomNav from './components/BottomNav';
 import CarouselSection from './components/CarouselSection';
 import Banner from './components/Banner';
 
@@ -211,7 +210,6 @@ export default function Home() {
         <CarouselSection title="Thịnh hành" profiles={trendingProfiles} />
         <CarouselSection title="Mới nhất" profiles={newProfiles} />
       </div>
-      {/* <BottomNav /> */}
     </div>
   );
 }

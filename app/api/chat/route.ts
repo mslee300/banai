@@ -66,8 +66,13 @@ export async function POST(request: Request) {
 
     const data = await response.json();
     return NextResponse.json(data);
-  } catch (error: any) {
-    console.error("Error in /api/chat route:", error);
+  } catch (error: unknown) {
+    if (error instanceof Error) {
+      console.error("Error in /api/chat route:", error.message);
+    } else {
+      console.error("Unknown error in /api/chat route");
+    }
     return NextResponse.json({ error: "Server error." }, { status: 500 });
   }
+  
 }

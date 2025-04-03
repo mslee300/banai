@@ -342,13 +342,15 @@ export default function ChatClient({ characterId }: ChatClientProps) {
   async function sendMessage() {
     if (!userInput.trim()) return;
 
-    // Append user's message...
-    const newMessages = [...messages, { sender: "user", text: userInput }];
-    // ...and then add a placeholder bot message for loading.
+    const newMessages = [
+      ...messages,
+      { sender: "user" as const, text: userInput },
+    ];
     const newMessagesWithPlaceholder = [
       ...newMessages,
-      { sender: "character", text: "" },
+      { sender: "character" as const, text: "" },
     ];
+    
     setMessages(newMessagesWithPlaceholder);
     const currentInput = userInput;
     setUserInput("");

@@ -361,12 +361,12 @@ export default function ChatClient({ characterId }: ChatClientProps) {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
-          systemMessage: characterInfo.systemMessage,
+          systemMessage: characterInfo!.systemMessage,
           messages: getFormattedMessages().concat({
             role: "user",
             content: currentInput,
           }),
-        }),
+        }),        
       });
 
       const data = await res.json();

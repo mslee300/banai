@@ -1,10 +1,6 @@
 // app/[character]/page.tsx
 import ChatClient from "./ChatClient";
 
-export default function ChatPage({
-  params,
-}: {
-  params: { character: string };
-}) {
+export default async function ChatPage({ params }: any) {
   return <ChatClient characterId={params.character} />;
 }

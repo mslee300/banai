@@ -318,19 +318,18 @@ const characters = [
 
 export default function ChatClient({ characterId }: ChatClientProps) {
   const router = useRouter();
-  const characterInfo = characters.find((c) => c.id === characterId);
+  const characterInfo = characters.find((c) => c.id === characterId) || null;
 
+  const [messages, setMessages] = useState<Message[]>(
+    characterInfo ? [{ sender: "character", text: characterInfo.initialGreeting }] : []
+  );
+  const [userInput, setUserInput] = useState("");
+  const [isLoading, setIsLoading] = useState(false);
+  
   if (!characterInfo) {
     return <div>Character not found.</div>;
   }
-
-  // Start with the character's initial greeting.
-  // Also, note that when sending a message, we'll append a placeholder bot message.
-  const [messages, setMessages] = useState<Message[]>([
-    { sender: "character", text: characterInfo.initialGreeting },
-  ]);
-  const [userInput, setUserInput] = useState("");
-  const [isLoading, setIsLoading] = useState(false);
+  
 
   // Convert local messages into the format required by the API.
   function getFormattedMessages() {
